@@ -128,8 +128,8 @@ const FabMenu = class extends React.Component {
                 transform: `translate(${x}px, ${y}px)`,
                 height: size,
                 width: size,
-                right: 30 + row * 10,
-                bottom: 30 + col * 10,
+                right: 20 + (3 - col) * 10,
+                bottom: 20 + (3 - row) * 10,
               }}
             >
               <Icon style={{ opacity }}>{icon}</Icon>
