@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import GitHubForkRibbon from 'react-github-fork-ribbon'
 import FabMenu from './components/FabMenu'
 
 const items = [
@@ -16,6 +17,15 @@ class App extends Component {
   render() {
     return (
       <div>
+        <GitHubForkRibbon
+          position="right"
+          color="red"
+          href="https://github.com/JulienUsson/react-menu-animation"
+          target="_blank"
+        >
+          Fork me on GitHub
+        </GitHubForkRibbon>
+
         <FabMenu items={items} />
       </div>
     )
