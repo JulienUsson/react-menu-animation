@@ -115,24 +115,30 @@ const FabMenu = class extends React.Component {
           y: spring(open ? -75 - col * 75 : 0, presets.gentle),
           size: spring(open ? 56 : 5, presets.gentle),
         }}
-        onRest={this.onRest}
+        // onRest={this.onRest}
       >
-        {({ x, y, size, opacity }) => (
-          <Button
-            variant="fab"
-            color="primary"
-            className={classes.menuItem}
-            style={{
-              transform: `translate(${x}px, ${y}px)`,
-              height: size,
-              width: size,
-              right: 30 + row * 10,
-              bottom: 30 + col * 10,
-            }}
-          >
-            <CloseIcon style={{ opacity }} />
-          </Button>
-        )}
+        {({ x, y, size, opacity }) => {
+          if (!open && size < 5) {
+            this.onRest()
+          }
+
+          return (
+            <Button
+              variant="fab"
+              color="primary"
+              className={classes.menuItem}
+              style={{
+                transform: `translate(${x}px, ${y}px)`,
+                height: size,
+                width: size,
+                right: 30 + row * 10,
+                bottom: 30 + col * 10,
+              }}
+            >
+              <CloseIcon style={{ opacity }} />
+            </Button>
+          )
+        }}
       </Motion>
     )
   }
