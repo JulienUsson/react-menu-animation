@@ -112,18 +112,18 @@ const FabMenu = class extends React.Component {
             open ? presets.gentle : presets.noWobble
           ),
           x: spring(
-            open ? -75 - row * 75 : 0,
+            open ? -75 - (3 - col) * 75 : 0,
             open ? presets.gentle : presets.noWobble
           ),
           y: spring(
-            open ? -75 - col * 75 : 0,
+            open ? -75 - (3 - row) * 75 : 0,
             open ? presets.gentle : presets.noWobble
           ),
           size: spring(open ? 56 : 5, open ? presets.gentle : presets.noWobble),
         }}
       >
         {({ x, y, size, opacity }) => {
-          if (!open && size < 5) {
+          if (!open && size < 5.2) {
             this.onRest()
           }
 
