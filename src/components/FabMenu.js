@@ -20,6 +20,8 @@ const styles = theme => ({
     height: 5,
     width: 5,
     borderRadius: '50%',
+    boxShadow:
+      '0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12)',
   },
   '@keyframes test': {
     from: {
@@ -48,7 +50,6 @@ const styles = theme => ({
   menuItem: {
     position: 'absolute',
     minHeight: 'auto',
-    boxShadow: 'none',
   },
 })
 
@@ -123,7 +124,7 @@ const FabMenu = class extends React.Component {
         }}
       >
         {({ x, y, size, opacity }) => {
-          if (!open && size < 5.2) {
+          if (!open && size < 5.1) {
             this.onRest()
           }
 
