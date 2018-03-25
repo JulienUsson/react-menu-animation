@@ -94,7 +94,7 @@ const FabMenu = class extends React.Component {
     }
   }
 
-  renderMenuItem = (row, col, color, icon) => {
+  renderMenuItem = (row, col, { color, icon, iconColor, onClick }) => {
     const { classes } = this.props
     const { open } = this.state
 
@@ -139,8 +139,12 @@ const FabMenu = class extends React.Component {
                 right: 20 + (3 - col) * 10,
                 bottom: 20 + (3 - row) * 10,
               }}
+              onClick={e => {
+                this.onClick()
+                onClick && onClick(e)
+              }}
             >
-              <Icon style={{ opacity }}>{icon}</Icon>
+              <Icon style={{ opacity, color: iconColor }}>{icon}</Icon>
             </Button>
           )
         }}
@@ -158,8 +162,13 @@ const FabMenu = class extends React.Component {
 
     return (
       <Fragment>
-        {items.map(({ color, icon }, index) =>
-          this.renderMenuItem(Math.floor(index / 3), index % 3, color, icon)
+        {items.map(({ color, icon, iconColor, onClick }, index) =>
+          this.renderMenuItem(Math.floor(index / 3), index % 3, {
+            color,
+            icon,
+            iconColor,
+            onClick,
+          })
         )}
       </Fragment>
     )

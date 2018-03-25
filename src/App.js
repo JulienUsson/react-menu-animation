@@ -3,14 +3,54 @@ import GitHubForkRibbon from 'react-github-fork-ribbon'
 import FabMenu from './components/FabMenu'
 
 const items = [
-  { color: '#E91E63', icon: 'map' },
-  { color: '#9C27B0', icon: 'my_location' },
-  { color: '#F44336', icon: 'local_taxi' },
-  { color: '#673AB7', icon: 'local_shipping' },
-  { color: '#2196F3', icon: 'restaurant' },
-  { color: '#3F51B5', icon: 'place' },
-  { color: '#FF9800', icon: 'train' },
-  { color: '#4CAF50', icon: 'tram' },
+  {
+    color: '#E91E63',
+    icon: 'map',
+    iconColor: '#fff',
+    onClick: () => alert('map'),
+  },
+  {
+    color: '#9C27B0',
+    icon: 'my_location',
+    iconColor: '#fff',
+    onClick: () => alert('my location'),
+  },
+  {
+    color: '#F44336',
+    icon: 'local_taxi',
+    iconColor: '#fff',
+    onClick: () => alert('local taxi'),
+  },
+  {
+    color: '#673AB7',
+    icon: 'local_shipping',
+    iconColor: '#fff',
+    onClick: () => alert('local shipping'),
+  },
+  {
+    color: '#2196F3',
+    icon: 'restaurant',
+    iconColor: '#fff',
+    onClick: () => alert('restaurant'),
+  },
+  {
+    color: '#3F51B5',
+    icon: 'place',
+    iconColor: '#fff',
+    onClick: () => alert('place'),
+  },
+  {
+    color: '#FF9800',
+    icon: 'train',
+    iconColor: '#fff',
+    onClick: () => alert('train'),
+  },
+  {
+    color: '#4CAF50',
+    icon: 'tram',
+    iconColor: '#fff',
+    onClick: () => alert('tram'),
+  },
 ]
 
 class App extends Component {
