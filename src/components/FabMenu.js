@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
-import { Button, withStyles } from 'material-ui'
-import CloseIcon from 'material-ui-icons/Close'
+import { Button, withStyles, Icon } from 'material-ui'
 import { Motion, spring, presets } from 'react-motion'
 
 const styles = theme => ({
@@ -73,31 +72,29 @@ const FabMenu = class extends React.Component {
   }
 
   renderContent = () => {
-    const { classes } = this.props
+    const { classes, items } = this.props
     const { open, displayMenuItems } = this.state
 
     if (!open && !displayMenuItems) {
       return (
         <div className={classes.fakeBtnGrid}>
-          <div className={classes.fakeBtn} />
-          <div className={classes.fakeBtn} />
-          <div className={classes.fakeBtn} />
-          <div className={classes.fakeBtn} />
-          <div className={classes.fakeBtn} />
-          <div className={classes.fakeBtn} />
-          <div className={classes.fakeBtn} />
-          <div className={classes.fakeBtn} />
-          <div className={classes.fakeBtn} />
+          {items.map(({ color }, index) => (
+            <div
+              key={index}
+              style={{ backgroundColor: color }}
+              className={classes.fakeBtn}
+            />
+          ))}
         </div>
       )
     } else if (open) {
-      return <CloseIcon className={classes.closeIcon} />
+      return <Icon className={classes.closeIcon}>close</Icon>
     } else {
       return ''
     }
   }
 
-  renderMenuItem = (row, col) => {
+  renderMenuItem = (row, col, color, icon) => {
     const { classes } = this.props
     const { open } = this.state
 
@@ -125,9 +122,9 @@ const FabMenu = class extends React.Component {
           return (
             <Button
               variant="fab"
-              color="primary"
               className={classes.menuItem}
               style={{
+                backgroundColor: color,
                 transform: `translate(${x}px, ${y}px)`,
                 height: size,
                 width: size,
@@ -135,7 +132,7 @@ const FabMenu = class extends React.Component {
                 bottom: 30 + col * 10,
               }}
             >
-              <CloseIcon style={{ opacity }} />
+              <Icon style={{ opacity }}>{icon}</Icon>
             </Button>
           )
         }}
@@ -144,6 +141,7 @@ const FabMenu = class extends React.Component {
   }
 
   renderMenuItems = () => {
+    const { items } = this.props
     const { displayMenuItems } = this.state
 
     if (!displayMenuItems) {
@@ -152,15 +150,9 @@ const FabMenu = class extends React.Component {
 
     return (
       <Fragment>
-        {this.renderMenuItem(0, 0)}
-        {this.renderMenuItem(0, 1)}
-        {this.renderMenuItem(0, 2)}
-        {this.renderMenuItem(1, 0)}
-        {this.renderMenuItem(1, 1)}
-        {this.renderMenuItem(1, 2)}
-        {this.renderMenuItem(2, 0)}
-        {this.renderMenuItem(2, 1)}
-        {this.renderMenuItem(2, 2)}
+        {items.map(({ color, icon }, index) =>
+          this.renderMenuItem(Math.floor(index / 3), index % 3, color, icon)
+        )}
       </Fragment>
     )
   }
