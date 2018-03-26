@@ -131,6 +131,7 @@ const FabMenu = class extends React.Component {
           return (
             <Button
               variant="fab"
+              disabled={!open}
               className={classes.menuItem}
               style={{
                 backgroundColor: color,
