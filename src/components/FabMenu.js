@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Button, withStyles, Icon } from 'material-ui'
+import { Button, Backdrop, withStyles, Icon } from 'material-ui'
 import { Motion, spring, presets } from 'react-motion'
 
 const styles = theme => ({
@@ -177,12 +177,14 @@ const FabMenu = class extends React.Component {
 
   render() {
     const { classes } = this.props
+    const { open } = this.state
     return (
       <Fragment>
         <Button variant="fab" onClick={this.onClick} className={classes.btn}>
           {this.renderContent()}
         </Button>
         {this.renderMenuItems()}
+        <Backdrop open={open} />
       </Fragment>
     )
   }
